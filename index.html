@@ -20,10 +20,8 @@
                     <img :src="image" alt="img_product" srcset="">
                 </div>
                 <div class="product-info">
-                    <h1>{{ product_title }}</h1>
-                    <p v-if="inStock > 10">In Stock</p>
-                    <p v-else-if="inStock < 10 && inStock > 1">Almost of out</p>
-                    <p v-else>Out of Stock</p>
+                    <h1>T-Shirt</h1>
+                    <p>In Stock</p>
                     <!-- INFO DO PRODUTO -->
                 </div>
             </div>
@@ -35,11 +33,10 @@
       
         createApp({
           setup() {
-            
+            const message = ref('Hello Vue!');
             return {
-              product_title: ref('T-Shirt'),
+              message,
               image: ref("./assets/images/t-shirt-blue.png"),
-              inStock: ref(0)
             }
           }
         }).mount('#app')
