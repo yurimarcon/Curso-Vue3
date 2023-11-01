@@ -34,10 +34,15 @@
                     <div 
                     v-for="variant in variants" 
                     :key="variant.id"
-                    @mouseover="changeImage(variant.image)">
-                        {{variant.color}}
+                    @mouseover="changeImage(variant.image)"
+                    class="color-circle"
+                    :style="{ backgroundColor: variant.color }">
                     </div>
-                    <button class="button" @click="addToCart" >Add To Cart</button>
+                    <button 
+                    class="button"
+                    :class="{ disabledButton : inStock < 1}"
+                    @click="addToCart" 
+                    :disabled="inStock < 1">Add To Cart</button>
                 </div>
             </div>
         </div>
@@ -62,7 +67,7 @@
             return {
               product_title: ref('T-Shirt'),
               image,
-              inStock: ref(15),
+              inStock: ref(9),
               details: ['50% Cotton', '30% polyester', '20% wool'],
               variants: [
                 {id:1, color:'blue', image: "./assets/images/t-shirt-blue.png"},
